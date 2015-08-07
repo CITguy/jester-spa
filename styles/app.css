@@ -1,16 +1,21 @@
 html, body {
   margin: 0;
   padding: 0;
+  font-family: 'Source Sans Pro', sans-serif;
 }
-#page-wrapper {
+
+body {
   display: flex;
-  height: 100%;
+  flex-flow: column nowrap;
 }
 
-#jester-editor.ace_editor {
-  flex: 1 0;
-
-  box-shadow: 2px 0px 10px -1px #999999;
+a:link,
+a:visited {
+  text-decoration: none;
+}
+a:hover,
+a:active {
+  text-decoration: underline;
 }
 
 .jester-preview {
@@ -23,3 +28,34 @@ html, body {
   flex: 1 0;
   overflow: scroll;
 }
+
+#content {
+  flex: 1 0;
+
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+#jester-editor {
+  flex: 1 0;
+  box-shadow: 0px 0px 10px 0px #999999;
+}
+
+#footer {
+  flex: 0 0 auto;
+  background-color: #dedede;
+  border-top: 1px solid #ccc;
+  z-index: 10;
+  padding: 2px 16px;
+  font-size: 12px;
+
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+#footer .column {
+  flex: 1 0;
+}
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+.text-center { text-align: center; }
