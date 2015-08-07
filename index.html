@@ -1,0 +1,45 @@
+<!DOCTYPE html!>
+<html lang="en" ng-app="jester">
+  <head>
+    <title>Jester Markdown Previewer</title>
+    <link rel="stylesheet" type="text/css" href="bower_components/github-markdown-css/github-markdown.css" />
+    <link rel="stylesheet" type="text/css" href="styles/app.css" />
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
+    <script src="bower_components/angular-ui-ace/ui-ace.js"></script>
+    <script src="bower_components/marked/lib/marked.js"></script>
+    <script src="bower_components/angular-marked/angular-marked.js"></script>
+    <script src="scripts/app.js"></script>
+  </head>
+  <body ng-controller="editorCtrl">
+    <div id="page-wrapper">
+      <div id="jester-editor"
+        ng-model="editorContent"
+        ui-ace="{
+          mode: 'markdown',
+          theme: 'github',
+          showGutter: true
+        }"></div>
+
+      <!--marked id="jester-preview">{{editorContent}}</marked-->
+      <div class="jester-preview">
+        <div class="markdown-body"
+          ng-if="generatedContent !== ''"
+          ng-bind-html="generatedContent">Foobar</div>
+
+        <div class="markdown-body" ng-if="generatedContent === ''">
+          <h1>Greetings!</h1>
+          <p>This is Jester! A simple github markdown editor/previewer.</p>
+          <ul>
+            <li><a href="https://help.github.com/articles/github-flavored-markdown/">Github flavored markdown</a> on the left</li>
+            <li>Github styled output on the right</li>
+          </ul>
+          <p><strong>Enjoy!</strong></p>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>

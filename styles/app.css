@@ -1,0 +1,25 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+#page-wrapper {
+  display: flex;
+  height: 100%;
+}
+
+#jester-editor.ace_editor {
+  flex: 1 0;
+
+  box-shadow: 2px 0px 10px -1px #999999;
+}
+
+.jester-preview {
+  flex: 1 0;
+  overflow: scroll;
+  padding: 20px;
+  display: flex;
+}
+
+.markdown-body {
+  flex: 1 0;
+}

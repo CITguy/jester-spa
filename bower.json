@@ -1,0 +1,31 @@
+{
+  "name": "jester",
+  "version": "0.1.0",
+  "authors": [
+    "Ryan Johnson <rhino.citguy@gmail.com>"
+  ],
+  "description": "Markdown Editor (SPA)",
+  "main": "index.html",
+  "keywords": [
+    "markdown",
+    "ace",
+    "editor",
+    "preview",
+    "spa",
+    "angular"
+  ],
+  "license": "GPLv3",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-ace": "bower",
+    "angular-marked": "~0.0.21",
+    "angular-sanitize": "~1.4.3",
+    "github-markdown-css": "~2.0.9"
+  }
+}
