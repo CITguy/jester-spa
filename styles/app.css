@@ -15,11 +15,11 @@ html, body {
 
 .jester-preview {
   flex: 1 0;
-  overflow: scroll;
   padding: 20px;
   display: flex;
 }
 
 .markdown-body {
   flex: 1 0;
+  overflow: scroll;
 }
