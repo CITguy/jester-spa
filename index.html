@@ -6,11 +6,13 @@
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300' rel='stylesheet' type='text/css'>
 
     <!-- stylesheets -->
+    <link rel="stylesheet" type="text/css" href="bower_components/highlightjs/styles/github-gist.css" />
     <link rel="stylesheet" type="text/css" href="bower_components/github-markdown-css/github-markdown.css" />
     <link rel="stylesheet" type="text/css" href="bower_components/fontawesome/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="styles/app.css" />
 
     <!-- scripts -->
+    <script src="bower_components/highlightjs/highlight.pack.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
@@ -21,16 +23,33 @@
   </head>
   <body ng-controller="editorCtrl">
     <div id="content">
-      <div id="jester-editor"
-        ng-model="editorContent"
-        ui-ace="{
-          mode: 'markdown',
-          theme: 'github',
-          showGutter: true
-        }">
-      </div>
+      <div id="editor">
+        <div id="editor-menubar">
+          <div class="column text-left">
+            <!-- reserved for upcoming functionality -->
+          </div>
+          <div class="column text-right">
+            <label for="selTheme">Theme:</label>
+            <select ng-model="config.theme" id="selTheme">
+              <optgroup ng-repeat="(ilk, themes) in availableThemes" label="{{ilk}}">
+                <option ng-repeat="theme in themes" value="{{theme[1]}}">{{theme[0]}}</option>
+              </optgroup>
+            </select>
+          </div>
+        </div><!-- #editor-menubar -->
 
-      <div class="jester-preview">
+        <div id="ace-editor"
+          ng-model="editorContent"
+          ui-ace="{
+            mode: 'markdown',
+            theme: config.theme,
+            showGutter: true,
+            onLoad: aceLoaded
+          }">
+        </div><!-- #ace-editor -->
+      </div><!-- #editor -->
+
+      <div id="preview">
         <div class="markdown-body"
           ng-if="generatedContent !== ''"
           ng-bind-html="generatedContent">
@@ -45,23 +64,23 @@
           </ul>
           <p><strong>Enjoy!</strong></p>
         </div>
-      </div>
-    </div>
+      </div><!-- #preview -->
+    </div><!-- #content -->
 
     <div id="footer">
-      <div class="column">
+      <div class="column text-left">
         Built by CITguy -
         <a href="https://twitter.com/CITguy"><i class="fa fa-twitter"></i></a>
         -
         <a href="https://github.com/CITguy"><i class="fa fa-github-alt"></i></a>
       </div>
       <div class="column text-center">
-        <code>Version 0.1.0</code>
+        <code>Version 0.2.0</code>
       </div>
       <div class="column text-right">
         <a href="https://github.com/CITguy/jester-spa">Fork on Github</a>
         <i class="fa fa-fw fa-code-fork"></i>
       </div>
-    </div>
+    </div><!-- #footer -->
   </body>
 </html>

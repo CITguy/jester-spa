@@ -7,26 +7,7 @@ html, body {
 body {
   display: flex;
   flex-flow: column nowrap;
-}
-
-a:link,
-a:visited {
-  text-decoration: none;
-}
-a:hover,
-a:active {
-  text-decoration: underline;
-}
-
-.jester-preview {
-  flex: 1 0;
-  padding: 20px;
-  display: flex;
-}
-
-.markdown-body {
-  flex: 1 0;
-  overflow: scroll;
+  height: 100%;
 }
 
 #content {
@@ -34,11 +15,6 @@ a:active {
 
   display: flex;
   flex-flow: row nowrap;
-}
-
-#jester-editor {
-  flex: 1 0;
-  box-shadow: 0px 0px 10px 0px #999999;
 }
 
 #footer {
@@ -53,9 +29,61 @@ a:active {
   flex-flow: row nowrap;
 }
 
-#footer .column {
+#editor-menubar {
+  /* flex item */
+  flex: 0 0 auto;
+  /* flex container */
+  display: flex;
+  flex-flow: row nowrap;
+
+  font-size: 12px;
+  padding: 2px 6px;
+  background-color: #dedede;
+  border-bottom: 1px solid #ccc;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+}
+a:hover,
+a:active {
+  text-decoration: underline;
+}
+
+#preview {
+  flex: 1 0;
+  padding: 20px;
+  overflow: scroll;
+
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.markdown-body {
   flex: 1 0;
 }
+.column {
+  flex: 1 0;
+}
+
+#editor {
+  flex: 1 0;
+  border-right: 1px solid #ccc;
+  box-shadow: 0px 0px 10px 0px #999999;
+
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+#ace-editor {
+  flex: 1 0;
+  /*height: 100%;*/
+}
+
 .text-right { text-align: right; }
 .text-left { text-align: left; }
 .text-center { text-align: center; }
+.no-flex {
+  flex: 0 0 auto;
+}
