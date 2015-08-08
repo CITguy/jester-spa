@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="styles/app.css" />
 
     <!-- scripts -->
+    <script src="bower_components/lodash/lodash.min.js"></script>
     <script src="bower_components/highlightjs/highlight.pack.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
@@ -19,6 +20,7 @@
     <script src="bower_components/angular-ui-ace/ui-ace.js"></script>
     <script src="bower_components/marked/lib/marked.js"></script>
     <script src="bower_components/angular-marked/angular-marked.js"></script>
+    <script src="bower_components/ng-debounce/angular-debounce.js"></script>
     <script src="scripts/app.js"></script>
   </head>
   <body ng-controller="editorCtrl">
@@ -26,41 +28,41 @@
       <div id="editor">
         <div id="editor-menubar">
           <div class="column text-left">
-            <!-- reserved for upcoming functionality -->
+            <button ng-click="newDocument()">
+              <i class="fa fa-fw fa-file-text-o"></i> New Document
+            </button>
           </div>
           <div class="column text-right">
             <label for="selTheme">Theme:</label>
-            <select ng-model="config.theme" id="selTheme">
-              <optgroup ng-repeat="(ilk, themes) in availableThemes" label="{{ilk}}">
-                <option ng-repeat="theme in themes" value="{{theme[1]}}">{{theme[0]}}</option>
-              </optgroup>
-            </select>
+            <select id="selTheme"
+              ng-model="theme"
+              ng-options="theme.val as theme.lbl group by theme.ilk for theme in availableThemes"></select>
           </div>
         </div><!-- #editor-menubar -->
 
         <div id="ace-editor"
-          ng-model="editorContent"
+          ng-model="rawContent"
           ui-ace="{
             mode: 'markdown',
-            theme: config.theme,
+            theme: theme,
             showGutter: true,
-            onLoad: aceLoaded
+            onLoad: configureAce
           }">
         </div><!-- #ace-editor -->
       </div><!-- #editor -->
 
       <div id="preview">
         <div class="markdown-body"
-          ng-if="generatedContent !== ''"
-          ng-bind-html="generatedContent">
-        </div>
+          ng-if="preview !== ''"
+          ng-bind-html="preview"></div>
 
-        <div class="markdown-body" ng-if="generatedContent === ''">
+        <div class="markdown-body" ng-if="preview === ''">
           <h1>Greetings!</h1>
           <p>This is Jester! A simple github markdown editor/previewer.</p>
           <ul>
             <li><a href="https://help.github.com/articles/github-flavored-markdown/">Github flavored markdown</a> on the left</li>
             <li>Github styled output on the right</li>
+            <li>Your work is saved automatically to local storage after 1 second of inactivity.</li>
           </ul>
           <p><strong>Enjoy!</strong></p>
         </div>
@@ -75,7 +77,7 @@
         <a href="https://github.com/CITguy"><i class="fa fa-github-alt"></i></a>
       </div>
       <div class="column text-center">
-        <code>Version 0.2.0</code>
+        <code>Version 0.4.0</code>
       </div>
       <div class="column text-right">
         <a href="https://github.com/CITguy/jester-spa">Fork on Github</a>

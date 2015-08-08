@@ -1,6 +1,6 @@
 {
   "name": "jester",
-  "version": "0.1.0",
+  "version": "0.4.0",
   "authors": [
     "Ryan Johnson <rhino.citguy@gmail.com>"
   ],
@@ -28,6 +28,8 @@
     "angular-sanitize": "~1.4.3",
     "github-markdown-css": "~2.0.9",
     "fontawesome": "~4.4.0",
-    "highlightjs": "~8.7.0"
+    "highlightjs": "~8.7.0",
+    "lodash": "~3.10.1",
+    "ng-debounce": "~0.1.5"
   }
 }

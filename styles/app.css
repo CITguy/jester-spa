@@ -18,10 +18,10 @@ body {
 }
 
 #footer {
+  z-index: 10;
   flex: 0 0 auto;
   background-color: #dedede;
   border-top: 1px solid #ccc;
-  z-index: 10;
   padding: 2px 16px;
   font-size: 12px;
 
@@ -30,6 +30,7 @@ body {
 }
 
 #editor-menubar {
+  z-index: 10;
   /* flex item */
   flex: 0 0 auto;
   /* flex container */
@@ -52,12 +53,16 @@ a:active {
 }
 
 #preview {
+  z-index: 5;
+
   flex: 1 0;
   padding: 20px;
   overflow: scroll;
 
   display: flex;
   flex-flow: column nowrap;
+  /* NOTE: doesn't look right with dark theme */
+  /*box-shadow: -16px 0px 12px -12px #ccc;*/
 }
 
 .markdown-body {
@@ -70,7 +75,6 @@ a:active {
 #editor {
   flex: 1 0;
   border-right: 1px solid #ccc;
-  box-shadow: 0px 0px 10px 0px #999999;
 
   display: flex;
   flex-flow: column nowrap;
@@ -78,7 +82,6 @@ a:active {
 
 #ace-editor {
   flex: 1 0;
-  /*height: 100%;*/
 }
 
 .text-right { text-align: right; }
