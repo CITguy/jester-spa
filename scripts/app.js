@@ -30,7 +30,7 @@ angular.module('jester', [
     /* debounce for 5 seconds */
     var _saveContent = debounce(function (content) {
         LocalStorage.setItem('rawContent', content);
-    }, 1000);
+    }, 500);
     var _loadTheme = function () {
         $scope.theme = LocalStorage.getItem('theme') || 'github';
     };
