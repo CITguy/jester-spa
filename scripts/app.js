@@ -9,7 +9,7 @@ angular.module('jester', [
     function (markedProvider) {
         markedProvider.setOptions({
             gfm: true,
-            breaks: true,
+            breaks: false,
             highlight: function (code) {
                 return hljs.highlightAuto(code).value;
             }
